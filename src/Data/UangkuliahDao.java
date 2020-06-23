@@ -34,7 +34,7 @@ public class UangkuliahDao {
     private final String SQL_INSERT_UANGKULIAH = "INSERT INTO "+SQL_TABLE_UANGKULIAH+"(nopembayaran, no_bp, semester, \n"
                                                  +"tahunajaran, jenispembayaran, golongan, jumlah) VALUES(?,?,?,?,?,?,?)";
     private final String SQL_UPDATE_UANGKULIAH = "UPDATE "+SQL_TABLE_UANGKULIAH+" SET "+
-            "nopembayaran=?, nobp=?, semester=?, tahunAjaran=?, jenispembayaran=?, golongan=?, jumlah=? "+
+            "nopembayaran=?, no_bp=?, semester=?, tahunAjaran=?, jenispembayaran=?, golongan=?, jumlah=? "+
             "WHERE nopembayaran=?";
     private final String SQL_DELETE_UANGKULIAH = "DELETE FROM "+SQL_TABLE_UANGKULIAH+" WHERE nopembayaran=?";
     private final String SQL_GET_UANGKULIAH = "SELECT * FROM "+SQL_TABLE_UANGKULIAH+" WHERE nopembayaran=?";

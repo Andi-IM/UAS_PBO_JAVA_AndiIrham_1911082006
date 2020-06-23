@@ -80,8 +80,11 @@ public class Prodi_controller {
         model.setNamaProdi(NamaProdi);
         
         try {
-            dao.update(model);
-            JOptionPane.showMessageDialog(view, "Updated");
+            int a = JOptionPane.showConfirmDialog(null, "Yakin mau diubah?", "Konfirmasi", 0, 2);
+            if (a == 0) {
+                dao.update(model);
+                JOptionPane.showMessageDialog(view, "Updated");
+            }
             clear();
         } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, 
@@ -92,8 +95,11 @@ public class Prodi_controller {
     public void delete(){
         String kodeProdi = view.getTxtKodeProdi().getText();
         try {
-            dao.delete(kodeProdi);
-            JOptionPane.showMessageDialog(null, "DELETED");
+            int a = JOptionPane.showConfirmDialog(null, "Yakin mau dihapus?", "Konfirmasi", 0, JOptionPane.OK_OPTION);
+            if (a == 0) {
+              dao.delete(kodeProdi);
+              JOptionPane.showMessageDialog(null, "DELETED");
+            }
             this.clear();
         } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());

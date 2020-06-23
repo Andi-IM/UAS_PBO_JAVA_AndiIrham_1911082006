@@ -17,7 +17,6 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -165,7 +164,7 @@ public class Mahasiswa_controller {
         model.setNama(view.getTxtNama().getText());
         model.setTempatLahir(view.getTxtTempatLahir().getText());
         model.setTglLahir(dateFormater(view.getSpinTanggal1().getValue()+"-"+view.getSpinBulan().getValue()+"-"+
-                view.getSpinTahun().getValue()));
+        view.getSpinTahun().getValue()));
         model.setJekel(setSemester());
         model.setAlamat(view.getTxtAreaAlamat().getText());
         model.setNoTelepon(view.getTxtTelepon().getText());
@@ -173,8 +172,11 @@ public class Mahasiswa_controller {
         model.setKodeProdi(getkdProdi(view.getCbProdi().getSelectedItem().toString()));
         
         try {
-            dao.update(model);
-            JOptionPane.showMessageDialog(view, "Updated");
+            int a = JOptionPane.showConfirmDialog(null, "Yakin mau diubah?", "Konfirmasi", 0, 2);
+            if (a == 0) {
+                dao.update(model);
+                JOptionPane.showMessageDialog(view, "Updated");
+            }
             clear();
         } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, 
@@ -185,8 +187,11 @@ public class Mahasiswa_controller {
     public void delete(){
         String noBP = view.getTxtNoBP().getText();
         try {
-            dao.delete(noBP);
-            JOptionPane.showMessageDialog(null, "DELETED");
+             int a = JOptionPane.showConfirmDialog(null, "Yakin mau dihapus?", "Konfirmasi", 0, JOptionPane.OK_OPTION);
+             if (a == 0) {
+                dao.delete(noBP);
+                JOptionPane.showMessageDialog(null, "DELETED");
+            }
             this.clear();
         } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
