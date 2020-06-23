@@ -145,17 +145,17 @@ public class MahasiswaView extends javax.swing.JFrame {
         txtTempatLahir.setText("jTextField3");
 
         spinTanggal1.setModel(new javax.swing.SpinnerListModel(new String[] {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
-        spinTanggal1.setToolTipText("");
+        spinTanggal1.setToolTipText("Tanggal");
         spinTanggal1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         spinTanggal1.setName(""); // NOI18N
 
         SpinBulan.setModel(new javax.swing.SpinnerListModel(new String[] {"Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "Nopember", "Desember"}));
-        SpinBulan.setToolTipText("");
+        SpinBulan.setToolTipText("Bulan");
         SpinBulan.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SpinBulan.setName(""); // NOI18N
 
         SpinTahun.setModel(new javax.swing.SpinnerNumberModel(2020, 1975, null, 1));
-        SpinTahun.setToolTipText("");
+        SpinTahun.setToolTipText("Tahun");
         SpinTahun.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         SpinTahun.setName(""); // NOI18N
 
@@ -169,7 +169,7 @@ public class MahasiswaView extends javax.swing.JFrame {
 
         lbJurusan.setText("Jurusan");
 
-        cbJurusan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--pilih--", "Teknologi Informasi", "Teknik Mesin", "Teknik Sipil", "Teknik Elektro", "Administrasi Niaga", "Akuntansi", "Bahasa Inggris" }));
+        cbJurusan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--pilih--", "Akuntansi", "Administrasi Niaga", "Bahasa Inggris", "Teknik Elektro", "Teknologi Informasi", "Teknik Mesin", "Teknik Sipil" }));
         cbJurusan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbJurusanActionPerformed(evt);
@@ -179,12 +179,18 @@ public class MahasiswaView extends javax.swing.JFrame {
         lbProdi.setText("Prodi");
 
         cbProdi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--pilih--" }));
+        cbProdi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbProdiActionPerformed(evt);
+            }
+        });
 
         lbGender.setText("Gender");
 
         buttonGroup1.add(rbPria);
         rbPria.setText("laki-laki");
 
+        buttonGroup1.add(rbWanita);
         rbWanita.setText("perempuan");
 
         tbMahasiswa.setModel(new javax.swing.table.DefaultTableModel(
@@ -246,7 +252,9 @@ public class MahasiswaView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -265,29 +273,30 @@ public class MahasiswaView extends javax.swing.JFrame {
                                         .addComponent(lbTTL))
                                     .addGap(18, 18, 18)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(txtTempatLahir)
-                                                .addComponent(rbPria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(layout.createSequentialGroup()
+                                                .addComponent(rbPria)
+                                                .addComponent(txtTempatLahir, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                     .addComponent(rbWanita))
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                    .addGap(26, 26, 26)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addGap(24, 24, 24)
                                                     .addComponent(spinTanggal1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(SpinBulan, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(SpinTahun, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                                    .addComponent(SpinBulan, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(SpinTahun, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(13, 13, 13))))
+                                        .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(306, 306, 306)
                                     .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(lbGender))
-                        .addGap(41, 41, 41)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbNoTelepon)
                                     .addComponent(lbJurusan)
@@ -295,18 +304,18 @@ public class MahasiswaView extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtTelepon)
-                                    .addComponent(cbJurusan, 0, 152, Short.MAX_VALUE)
-                                    .addComponent(cbProdi, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
+                                    .addComponent(cbJurusan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cbProdi, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(113, 113, 113))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(Insert)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(Update)
                                 .addGap(8, 8, 8)
                                 .addComponent(Delete)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Cancel)))
-                        .addGap(0, 148, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addComponent(Cancel)
+                                .addGap(63, 63, 63))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -365,12 +374,12 @@ public class MahasiswaView extends javax.swing.JFrame {
     private void cbJurusanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbJurusanActionPerformed
         // TODO add your handling code here:
          int pilih;
-        String TI[] = {"D4 Rekayasa Perangkat Lunak", "D3 Manajemen Informatika","D3 Teknik Komputer"};
+        String TI[] = {"D3 Teknik Komputer ","D3 Manajemen Informatika","D4 Rekayasa Perangkat Lunak"};
         String M[] = {"D3 Teknik Mesin", "D3 Teknik Alat Berat", "D4 Teknik Manufaktur"};
         String E[] = {"D3 Teknik Listrik", "D3 Teknik Elektro", "D3 Teknik Telekomunikasi",
             "D4 Teknik Elektro", "D4 Teknik Telekomunikasi"};
         String S[] = {"D3 Teknik Sipil","D4 Perencanaan Irigasi Rawa",
-            "D4 Manajemen Rek. Konstruksi", "D4 Perancangan Jalan dan Jembatan"};
+            "D4 Manajemen Rek. Konstruksi", "D4 Perancangan Jalan Jembatan"};
         String AN[] = {"D3 Administrasi Bisnis", "D3 Usaha Perjalanan Wisata"};
         String AK[] = {"D3 Akuntansi", "D4 Akuntansi"};
         String BI[] = {"D3 Bahasa Inggris"};
@@ -381,7 +390,7 @@ public class MahasiswaView extends javax.swing.JFrame {
             cbProdi.removeAllItems();
             cbProdi.addItem("--pilih--");
             break;
-            case 1:
+            case 5:
             cbProdi.setEnabled(true);
             cbProdi.removeAllItems();
              for (String TI1 : TI) {
@@ -389,7 +398,7 @@ public class MahasiswaView extends javax.swing.JFrame {
              }
             break;
 
-            case 2:
+            case 6:
             cbProdi.setEnabled(true);
             cbProdi.removeAllItems();
              for (String M1 : M) {
@@ -397,7 +406,7 @@ public class MahasiswaView extends javax.swing.JFrame {
              }
             break;
 
-            case 3:
+            case 7:
             cbProdi.setEnabled(true);
             cbProdi.removeAllItems();
              for (String S1 : S) {
@@ -413,7 +422,7 @@ public class MahasiswaView extends javax.swing.JFrame {
              }
             break;
 
-            case 5:
+            case 2:
             cbProdi.setEnabled(true);
             cbProdi.removeAllItems();
              for (String AN1 : AN) {
@@ -421,7 +430,7 @@ public class MahasiswaView extends javax.swing.JFrame {
              }
             break;
 
-            case 6:
+            case 1:
             cbProdi.setEnabled(true);
             cbProdi.removeAllItems();
              for (String AK1 : AK) {
@@ -429,11 +438,12 @@ public class MahasiswaView extends javax.swing.JFrame {
              }
             break;
 
-            case 7:
+            case 3:
             cbProdi.setEnabled(true);
             cbProdi.removeAllItems();
              for (String BI1 : BI) {
                  cbProdi.addItem(BI1);
+                 cbProdi.disable();
              }
             break;
 
@@ -471,6 +481,10 @@ public class MahasiswaView extends javax.swing.JFrame {
         // TODO add your handling code here:
         controller.clear();
     }//GEN-LAST:event_CancelActionPerformed
+
+    private void cbProdiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbProdiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbProdiActionPerformed
 
     /**
      * @param args the command line arguments

@@ -3,12 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/coding/Sourcecodes/JavaPrograms/proyek%20luar/UAS_PBO_JAVA_AndiIrham_1911082006/src/View/UangkuliahView.java</file>
-            <file>file:/D:/coding/Sourcecodes/JavaPrograms/proyek%20luar/UAS_PBO_JAVA_AndiIrham_1911082006/src/Model/Uangkuliah_model.java</file>
-            <file>file:/D:/coding/Sourcecodes/JavaPrograms/proyek%20luar/UAS_PBO_JAVA_AndiIrham_1911082006/src/Controller/Uangkuliah_controller.java</file>
-            <file>file:/D:/coding/Sourcecodes/JavaPrograms/proyek%20luar/UAS_PBO_JAVA_AndiIrham_1911082006/src/View/MahasiswaView.java</file>
-            <file>file:/D:/coding/Sourcecodes/JavaPrograms/proyek%20luar/UAS_PBO_JAVA_AndiIrham_1911082006/src/Controller/Mahasiswa_controller.java</file>
-            <file>file:/D:/coding/Sourcecodes/JavaPrograms/proyek%20luar/UAS_PBO_JAVA_AndiIrham_1911082006/src/Data/UangkuliahDao.java</file>
+            <file>file:/D:/coding/Sourcecodes/JavaPrograms/UAS_PBO_JAVA_AndiIrham_1911082006/src/Controller/Uangkuliah_controller.java</file>
+            <file>file:/D:/coding/Sourcecodes/JavaPrograms/UAS_PBO_JAVA_AndiIrham_1911082006/src/Data/UangkuliahDao.java</file>
+            <file>file:/D:/coding/Sourcecodes/JavaPrograms/UAS_PBO_JAVA_AndiIrham_1911082006/src/Model/Uangkuliah_model.java</file>
+            <file>file:/D:/coding/Sourcecodes/JavaPrograms/UAS_PBO_JAVA_AndiIrham_1911082006/src/View/UangkuliahView.java</file>
+            <file>file:/D:/coding/Sourcecodes/JavaPrograms/UAS_PBO_JAVA_AndiIrham_1911082006/src/Model/Mahasiswa_model.java</file>
+            <file>file:/D:/coding/Sourcecodes/JavaPrograms/UAS_PBO_JAVA_AndiIrham_1911082006/src/Data/MahasiswaDao.java</file>
+            <file>file:/D:/coding/Sourcecodes/JavaPrograms/UAS_PBO_JAVA_AndiIrham_1911082006/src/Controller/Mahasiswa_controller.java</file>
+            <file>file:/D:/coding/Sourcecodes/JavaPrograms/UAS_PBO_JAVA_AndiIrham_1911082006/src/View/MahasiswaView.java</file>
         </group>
     </open-files>
 </project-private>

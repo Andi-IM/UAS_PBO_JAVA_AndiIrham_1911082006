@@ -38,6 +38,8 @@ public class ProdiDao {
     private final String SQL_GET_NM_JURUSAN = "SELECT namaJurusan FROM "+SQL_TABLE_PRODI+" WHERE kdJurusan= ? LIMIT 1";
     private final String SQL_GET_KD_PRODI = "SELECT kdProdi FROM "+SQL_TABLE_PRODI+" WHERE namaprodi= ?";
     private final String SQL_GET_KD_JURUSAN = "SELECT distinct kdJurusan FROM "+SQL_TABLE_PRODI+" WHERE namaJurusan= ?";
+    private final String SQL_GET_KDNM_PRODI = "SELECT kdprodi, namaprodi FROM "+SQL_TABLE_PRODI+" WHERE kdJurusan= ?";
+    private final String SQL_GET_KDNM_JURUSAN = "SELECT DISTINCT kdJurusan, namajurusan FROM "+SQL_TABLE_PRODI;
     public final String SQL_GET_ALLPRODI = "SELECT * FROM "+SQL_TABLE_PRODI;
     PreparedStatement ps;
     
@@ -45,8 +47,10 @@ public class ProdiDao {
         Koneksi k = new Koneksi();
         con = k.getConnection();
     }
-        
-    public void create(Prodi_model model) throws SQLException{
+    
+    // CRUD METHODS
+    public void create(Prodi_model model) throws SQLException   // CREATE RECORD 
+    {
         String sql = SQL_INSERT_PRODI;
         ps = con.prepareStatement(sql);
         ps.setString(1, model.getKdJurusan());
@@ -56,7 +60,8 @@ public class ProdiDao {
         ps.executeUpdate();
     }
     
-    public void update(Prodi_model model) throws SQLException {
+    public void update(Prodi_model model) throws SQLException   // UPDATE RECORD
+    {
         String sql = SQL_UPDATE_PRODI;
         ps = con.prepareStatement(sql);
         ps.setString(3, model.getKdJurusan());
@@ -66,14 +71,95 @@ public class ProdiDao {
         ps.executeUpdate();
     }
     
-    public void delete(String kode) throws SQLException {
+    public void delete(String kode) throws SQLException // DELETE RECORD
+    {
         String sql = SQL_DELETE_PRODI;
         ps = con.prepareStatement(sql);
         ps.setString(1, kode);
         ps.executeUpdate();
     }
      
-    public Prodi_model getTbProdi(String kdProdi) throws SQLException {
+    // GET METHODS
+    public String getNmJurusan(String kdJurusan) throws SQLException 
+    {
+        String sql = SQL_GET_NM_JURUSAN;
+        ps = con.prepareStatement(sql);
+        ps.setString(1, kdJurusan);
+        String jurusan = null;
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            jurusan = rs.getString(1);
+        }
+        return jurusan;
+    }
+    
+    public String getKdJurusan(String nmJurusan) throws SQLException 
+    {
+        String sql = SQL_GET_KD_JURUSAN;
+        ps = con.prepareStatement(sql);
+        ps.setString(1, nmJurusan);
+        String jurusan = null;
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            jurusan = rs.getString(1);
+        }
+        return jurusan;
+    }
+    
+    public String getNmProdi(String kdProdi) throws SQLException 
+    {
+        String sql = SQL_GET_NM_PRODI;
+        ps = con.prepareStatement(sql);
+        ps.setString(1, kdProdi);
+        String prodi = null;
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            prodi = rs.getString(1);
+        }
+        return prodi;
+    }
+    
+    public String getKdProdi(String nmProdi) throws SQLException 
+    {
+        String sql = SQL_GET_KD_PRODI;
+        ps = con.prepareStatement(sql);
+        ps.setString(1, nmProdi);
+        String prodi = null;
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            prodi = rs.getString(1);
+        }
+        return prodi;
+    }
+    
+    public List<String> getAllJurusan() throws SQLException
+    {
+        String sql = SQL_GET_KDNM_JURUSAN;
+        ps = con.prepareStatement(sql);
+        List<String> list = new ArrayList<>();
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {            
+            list.add(rs.getString(1));
+        }
+        return list;
+    }
+    
+    public List<String> getAllProdi(String kdProdi) throws SQLException
+    {
+        String sql = SQL_GET_KDNM_PRODI;
+        ps = con.prepareStatement(sql);
+        ps.setString(1, kdProdi);
+        List<String> list = new ArrayList<>();
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {            
+            list.add(rs.getString(1)) ;
+        }
+        return list;
+    }
+    
+    // GET TABLE METHODS
+    public Prodi_model getTbProdi(String kdProdi) throws SQLException 
+    {
         String sql = SQL_GET_PRODI;
         ps = con.prepareStatement(sql);
         ps.setString(1, kdProdi);
@@ -89,55 +175,8 @@ public class ProdiDao {
         return model;
     }
     
-    public String getNmJurusan(String kdJurusan) throws SQLException {
-        String sql = SQL_GET_NM_JURUSAN;
-        ps = con.prepareStatement(sql);
-        ps.setString(1, kdJurusan);
-        String jurusan = null;
-        ResultSet rs = ps.executeQuery();
-        if (rs.next()) {
-            jurusan = rs.getString(1);
-        }
-        return jurusan;
-    }
-    
-    public String getKdJurusan(String nmJurusan) throws SQLException {
-        String sql = SQL_GET_KD_JURUSAN;
-        ps = con.prepareStatement(sql);
-        ps.setString(1, nmJurusan);
-        String jurusan = null;
-        ResultSet rs = ps.executeQuery();
-        if (rs.next()) {
-            jurusan = rs.getString(1);
-        }
-        return jurusan;
-    }
-    
-    public String getNmProdi(String kdProdi) throws SQLException {
-        String sql = SQL_GET_NM_PRODI;
-        ps = con.prepareStatement(sql);
-        ps.setString(1, kdProdi);
-        String prodi = null;
-        ResultSet rs = ps.executeQuery();
-        if (rs.next()) {
-            prodi = rs.getString(1);
-        }
-        return prodi;
-    }
-    
-    public String getKdProdi(String nmProdi) throws SQLException {
-        String sql = SQL_GET_KD_PRODI;
-        ps = con.prepareStatement(sql);
-        ps.setString(1, nmProdi);
-        String prodi = null;
-        ResultSet rs = ps.executeQuery();
-        if (rs.next()) {
-            prodi = rs.getString(1);
-        }
-        return prodi;
-    }
-    
-    public List<Prodi_model> getAllTbProdi(Connection con) throws SQLException {
+    public List<Prodi_model> getAllTbProdi(Connection con) throws SQLException 
+    {
         String sql = SQL_GET_ALLPRODI;
         ps = con.prepareStatement(sql);
         Prodi_model model;

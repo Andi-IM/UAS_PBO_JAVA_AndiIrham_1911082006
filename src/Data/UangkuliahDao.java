@@ -31,15 +31,17 @@ public class UangkuliahDao {
     private final String SQL_TABLE_PRODI = "prodi";
     private final String SQL_TABLE_MAHASISWA = "mahasiswa";
     private final String SQL_TABLE_UANGKULIAH = "uangkuliah";
-    private final String SQL_INSERT_UANGKULIAH = "INSERT INTO "+SQL_TABLE_UANGKULIAH+" VALUES(?,?,?,?,?,?,?)";
+    private final String SQL_INSERT_UANGKULIAH = "INSERT INTO "+SQL_TABLE_UANGKULIAH+"(nopembayaran, no_bp, semester, \n"
+                                                 +"tahunajaran, jenispembayaran, golongan, jumlah) VALUES(?,?,?,?,?,?,?)";
     private final String SQL_UPDATE_UANGKULIAH = "UPDATE "+SQL_TABLE_UANGKULIAH+" SET "+
             "nopembayaran=?, nobp=?, semester=?, tahunAjaran=?, jenispembayaran=?, golongan=?, jumlah=? "+
             "WHERE nopembayaran=?";
     private final String SQL_DELETE_UANGKULIAH = "DELETE FROM "+SQL_TABLE_UANGKULIAH+" WHERE nopembayaran=?";
     private final String SQL_GET_UANGKULIAH = "SELECT * FROM "+SQL_TABLE_UANGKULIAH+" WHERE nopembayaran=?";
-    public final String SQL_GET_ALL_UANGKULIAH = "SELECT no_bp, nama, tempatLahir, tanggalLahir, jekel, "+
-                                                "alamat, noTelepon, namaJurusan, namaProdi FROM mahasiswa JOIN "+
-                                                SQL_TABLE_MAHASISWA+" USING(kdProdi);";
+    public final String SQL_GET_ALL_UANGKULIAH = "SELECT nopembayaran, nama, namajurusan, namaprodi, semester, \n" +
+                                                 "tahunajaran, golongan, jenispembayaran, jumlah, tanggalpembayaran  \n" +
+                                                 "FROM "+SQL_TABLE_UANGKULIAH+" JOIN "+SQL_TABLE_MAHASISWA+" using(no_bp) \n" +
+                                                 "JOIN "+SQL_TABLE_PRODI+" USING(kdprodi);";
 
     public UangkuliahDao() {
         Koneksi k = new Koneksi();
@@ -60,7 +62,7 @@ public class UangkuliahDao {
     }
      
     public void update(Uangkuliah_model model) throws SQLException {
-        String sql = SQL_INSERT_UANGKULIAH;
+        String sql = SQL_UPDATE_UANGKULIAH;
         ps = con.prepareStatement(sql);
         ps.setString(1, model.getNoPembayaran());
         ps.setString(2, model.getNoBp());

@@ -16,8 +16,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -216,10 +218,15 @@ public class Mahasiswa_controller {
     }
     
     public void getSemester(String smt){
-        if ("Laki-Laki".equals(smt)) {
-            view.getRbPria().setSelected(true);
-        }else {
-            view.getRbWanita().setSelected(true);
+        switch(smt){
+            case "laki-laki":
+                view.getRbPria().setSelected(true);
+                break;
+            case "perempuan":
+                view.getRbWanita().setSelected(true);
+                break;
+            default :
+                break;
         }
     } 
     
@@ -230,22 +237,50 @@ public class Mahasiswa_controller {
           return  view.getRbWanita().getText();
         } 
     }
-     
+    
+    public int getIndexJurusan(String kdJurusan){
+        pdao = new ProdiDao();
+        List<String> list = new ArrayList<>();
+        try {
+             list = pdao.getAllJurusan();
+             for (String string : list) {
+                 if (string.equals(kdJurusan)) {
+                     return list.indexOf(kdJurusan);
+                 }
+            }
+        } catch (SQLException e) { 
+            JOptionPane.showMessageDialog(null, "Error: "+e.getMessage());}
+        return 0;
+    }
+    
+    public int getIndexProdi(String kodeProdi, String kdJurusan){
+        pdao = new ProdiDao();
+        List<String> list = new ArrayList<>();
+        try {
+             list = pdao.getAllProdi(kdJurusan);
+             for (String string : list) {
+                 if (string.equals(kodeProdi)) {
+                     return list.indexOf(kodeProdi);
+                 }
+            }
+        } catch (SQLException e) { 
+            JOptionPane.showMessageDialog(null, "Error: "+e.getMessage());}
+        return 0;
+    }
+    
     public void onMouseClickTabelMahasiswa(){
         dao = new MahasiswaDao();
         String noBP = view.getTbMahasiswa().getValueAt(
                 view.getTbMahasiswa().getSelectedRow(),0).toString();
-        Object indexJurusan = "Teknologi Informasi";
-        int indexProdi = 0;
         
         try {
             model = dao.getTbMahasiswa(noBP);
             String[] getDate = dateFormater(model.getTglLahir()).split("-");
-            System.out.println(Arrays.toString(getDate));
-            System.out.println(getDate[0]);
-            System.out.println(getDate[1]);
-            System.out.println(getDate[2]);
-            
+            int indexJurusan = getIndexJurusan(model.getKdJurusan());
+            int indexProdi = getIndexProdi(model.getKodeProdi(), model.getKdJurusan());
+            System.out.println("Jurusan = "+indexJurusan);
+            System.out.println("Prodi = "+indexProdi);
+                    
             view.getTxtNoBP().setText(model.getNo_bp());
             view.getTxtNama().setText(model.getNama());
             view.getTxtTempatLahir().setText(model.getTempatLahir());
@@ -255,8 +290,8 @@ public class Mahasiswa_controller {
             getSemester(model.getJekel());
             view.getTxtAreaAlamat().setText(model.getAlamat());
             view.getTxtTelepon().setText(model.getNoTelepon());
-            view.getCbJurusan().setSelectedItem(indexJurusan);
-            view.getCbProdi().setSelectedItem(noBP);
+            view.getCbJurusan().setSelectedIndex(indexJurusan+1);
+            view.getCbProdi().setSelectedIndex(indexProdi);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(view, "Error : "+e);
         }

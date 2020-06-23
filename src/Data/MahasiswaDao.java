@@ -36,6 +36,10 @@ public class MahasiswaDao {
     public final String SQL_GET_ALL_MAHASISWA = "SELECT no_bp, nama, tempatLahir, tanggalLahir, jekel, "+
                                                 "alamat, noTelepon, namaJurusan, namaProdi FROM mahasiswa JOIN "+
                                                 SQL_TABLE_PRODI+" USING(kdProdi);";
+    public final String SQL_GET_UKT_MAHASISWA = "SELECT no_bp, nama, namajurusan, namaprodi "
+                                                +"FROM "+SQL_TABLE_MAHASISWA+" JOIN "+SQL_TABLE_PRODI+" USING(kdProdi);";
+    
+    
     PreparedStatement ps;
     public MahasiswaDao() {
         Koneksi k = new Koneksi();
