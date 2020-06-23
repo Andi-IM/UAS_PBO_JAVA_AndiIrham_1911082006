@@ -130,19 +130,17 @@ public class MahasiswaView extends javax.swing.JFrame {
         Cancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Mahasiswa");
+        setBackground(new java.awt.Color(255, 204, 51));
 
-        Judul.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        Judul.setFont(new java.awt.Font("MV Boli", 0, 24)); // NOI18N
         Judul.setText("Database Mahasiswa");
 
         lbNoBP.setText("NO. BP");
 
         lbNama.setText("Nama");
 
-        txtNama.setText("jTextField2");
-
         lbTTL.setText("TTL");
-
-        txtTempatLahir.setText("jTextField3");
 
         spinTanggal1.setModel(new javax.swing.SpinnerListModel(new String[] {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
         spinTanggal1.setToolTipText("Tanggal");

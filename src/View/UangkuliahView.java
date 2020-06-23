@@ -153,6 +153,8 @@ public class UangkuliahView extends javax.swing.JFrame {
         lbNoPembayaran = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Form Pembayaran");
+        setBackground(new java.awt.Color(255, 204, 51));
 
         Judul.setFont(new java.awt.Font("MV Boli", 0, 24)); // NOI18N
         Judul.setText("Pembayaran Uang Kuliah");

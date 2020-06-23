@@ -75,8 +75,10 @@ public class ProdiView extends javax.swing.JFrame {
         findJurusan = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Prodi");
+        setBackground(new java.awt.Color(255, 204, 51));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("MV Boli", 0, 24)); // NOI18N
         jLabel1.setText("Database Prodi");
 
         lbKodeJurusan.setText("Kode Jurusan");
