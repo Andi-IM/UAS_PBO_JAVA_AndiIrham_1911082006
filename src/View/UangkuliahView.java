@@ -28,6 +28,8 @@ public class UangkuliahView extends javax.swing.JFrame {
         initComponents();
         controller = new Uangkuliah_controller(this);
         controller.clear();
+        controller.isiTable();
+        controller.isiTableMahasiswa();
     }
 
     public JSpinner getSpinSemester() {
@@ -170,27 +172,57 @@ public class UangkuliahView extends javax.swing.JFrame {
 
         lbJenisPembayaran.setText("Jenis Pembayaran");
 
-        cbJenisPembayaran.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbJenisPembayaran.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--pilih--", "Tunai", "Transfer Bank", "e-Wallet" }));
 
         lbGolongan.setText("Golongan");
 
         kelompokUkt.add(Level0);
         Level0.setText("0");
+        Level0.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Level0MouseClicked(evt);
+            }
+        });
 
         kelompokUkt.add(Level1);
         Level1.setText("1");
+        Level1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Level1MouseClicked(evt);
+            }
+        });
 
         kelompokUkt.add(Level2);
         Level2.setText("2");
+        Level2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Level2MouseClicked(evt);
+            }
+        });
 
         kelompokUkt.add(Level3);
         Level3.setText("3");
+        Level3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Level3MouseClicked(evt);
+            }
+        });
 
         kelompokUkt.add(Level4);
         Level4.setText("4");
+        Level4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Level4MouseClicked(evt);
+            }
+        });
 
         kelompokUkt.add(Level5);
         Level5.setText("5");
+        Level5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Level5MouseClicked(evt);
+            }
+        });
 
         lbJumlah.setText("Jumlah");
 
@@ -225,15 +257,40 @@ public class UangkuliahView extends javax.swing.JFrame {
                 "No. BP", "Nama", "Jurusan", "Prodi"
             }
         ));
+        tblMhs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblMhsMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblMhs);
 
         Insert.setText("Insert");
+        Insert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InsertActionPerformed(evt);
+            }
+        });
 
         Update.setText("Update");
+        Update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateActionPerformed(evt);
+            }
+        });
 
         Delete.setText("Delete");
+        Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteActionPerformed(evt);
+            }
+        });
 
         Cancel.setText("Cancel");
+        Cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelActionPerformed(evt);
+            }
+        });
 
         lbSemester.setText("Semester");
 
@@ -310,7 +367,7 @@ public class UangkuliahView extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(lbTahunAjaran)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTA, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -384,8 +441,65 @@ public class UangkuliahView extends javax.swing.JFrame {
 
     private void tableUktMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableUktMouseClicked
         // TODO add your handling code here:
-        
+        controller.tableUktMouseClicked();
     }//GEN-LAST:event_tableUktMouseClicked
+
+    private void tblMhsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMhsMouseClicked
+        // TODO add your handling code here:
+        controller.tblMhsMouseClicked();
+    }//GEN-LAST:event_tblMhsMouseClicked
+
+    private void InsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertActionPerformed
+        // TODO add your handling code here:
+        controller.insert();
+        controller.isiTable();
+    }//GEN-LAST:event_InsertActionPerformed
+
+    private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
+        // TODO add your handling code here:
+        controller.update();
+        controller.isiTable();
+    }//GEN-LAST:event_UpdateActionPerformed
+
+    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
+        // TODO add your handling code here:
+        controller.delete();
+        controller.isiTable();
+    }//GEN-LAST:event_DeleteActionPerformed
+
+    private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
+        // TODO add your handling code here:
+        controller.clear();
+    }//GEN-LAST:event_CancelActionPerformed
+
+    private void Level0MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Level0MouseClicked
+        // TODO add your handling code here:
+        spinJumlah.setValue(0);
+    }//GEN-LAST:event_Level0MouseClicked
+
+    private void Level1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Level1MouseClicked
+        spinJumlah.setValue(500000);
+    }//GEN-LAST:event_Level1MouseClicked
+
+    private void Level2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Level2MouseClicked
+        // TODO add your handling code here:
+        spinJumlah.setValue(1500000);
+    }//GEN-LAST:event_Level2MouseClicked
+
+    private void Level3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Level3MouseClicked
+        // TODO add your handling code here:
+        spinJumlah.setValue(2500000);
+    }//GEN-LAST:event_Level3MouseClicked
+
+    private void Level4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Level4MouseClicked
+        // TODO add your handling code here:
+        spinJumlah.setValue(3000000);
+    }//GEN-LAST:event_Level4MouseClicked
+
+    private void Level5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Level5MouseClicked
+        // TODO add your handling code here:
+        spinJumlah.setValue(5000000);
+    }//GEN-LAST:event_Level5MouseClicked
 
     /**
      * @param args the command line arguments
